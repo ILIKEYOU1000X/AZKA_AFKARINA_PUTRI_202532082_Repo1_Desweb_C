@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZKA-HUB - Dokumentasi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        :root { --bg-color: #c4d6fc; --secondary-bg: #f9fafc; --primary-blue: #1747af; --text-light: #ffffff; --gray-light: #a9b3c1; }
+        body { background-color: var(--bg-color); color: var(--text-light); min-height: 100vh; display: flex; flex-direction: column; }
+        
+        /* NAVBAR */
+        nav { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: rgba(83, 127, 250, 0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(83, 127, 250, 0.95); }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-area img { height: 50px; width: auto; }
+        .logo-area h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
+        .logo-area span { color: var(--primary-blue); }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-blue); text-shadow: 0 0 10px var(--primary-blue); }
+
+
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; background: transparent; border: none; gap: 5px; }
+        .menu-toggle .bar { height: 3px; width: 25px; background-color: #ffffff; border-radius: 2px; }
+
+        /* KONTEN UTAMA */
+        main { flex: 1; margin-top: 90px; padding: 60px 50px 80px 50px; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; text-transform: uppercase; }
+        .section-title span { color: var(--primary-blue); }
+        
+        .grid-inovasi { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .card-inovasi { background-color: var(--secondary-bg); border-radius: 10px; overflow: hidden; cursor: pointer; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); text-align: left; }
+        .card-inovasi:hover { transform: translateY(-5px); border-color: var(--primary-blue); box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2); }
+        .card-inovasi img { width: 100%; height: 220px; object-fit: cover; }
+        .card-content { padding: 25px; }
+        .card-content h3 { margin-bottom: 10px; color: var(--primary-blue); }
+        .card-content p { font-size: 0.9rem; color: var(--gray-light); margin: 0; }
+
+        /* POPUP MODAL */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); align-items: center; justify-content: center; }
+        .modal-content { background-color: var(--secondary-bg); padding: 25px; border-radius: 12px; max-width: 500px; width: 90%; border: 2px solid var(--primary-blue); position: relative; text-align: center; }
+        .modal-content img { width: 100%; border-radius: 15px; margin-bottom: 8px; }
+        .close-btn { position: absolute; top: 17px; right: 22px; color: #ffffff; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close-btn:hover { color: var(--primary-blue); }
+
+        /* FOOTER */
+        footer { background-color: #133d8f; padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer p { color: var(--gray-light); font-size: 0.95rem; line-height: 1.6; max-width: 600px; margin: 0 auto; }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 768px) {
+            nav { padding: 20px 25px; }
+            .menu-toggle { display: flex; }
+            .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 90px; left: 0; background: rgba(11, 12, 16, 0.98); padding: 20px; border-bottom: 2px solid var(--primary-blue); gap: 20px; text-align: center; }
+            .nav-links.active { display: flex; }
+            main { padding: 40px 20px; }
+            .section-title { font-size: 2rem; margin-bottom: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-area">
+             <img src="logo.png" alt="Logo" onerror="this.style.display='none';"> 
+            <h1>ZKA-LUCU</h1>
+        </div>
+        <button class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="dokumentasi.html" class="active">Dokumentasi</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2 class="section-title"><span>Dokumentasi Saya</span></h2>
+        <div class="grid-inovasi">
+            <div class="card-inovasi" onclick="bukaPopup('KEGIATAN 1', 'FOTO 1.jpeg', ' merupakan kegiatan dari creative student home di KPK RI')">
+                <img src="FOTO 1.jpeg" alt="fFOTO 1">
+                <div class="card-content">
+                    <h3>KEGITAN 1</h3>
+                    <p>Baca selengkapnya-></p>
+                </div>
+            </div>
+
+            <div class="card-inovasi" onclick="bukaPopup('KEGIATAN 2', 'FOTO 2.jpeg', 'merupakan kegiatan dari creative student home di KPK RI')">
+                <img src="FOTO 2.jpeg" alt="FOTO 2" onerror="this.src='https://via.placeholder.com/400x250/1f2833/00d2ff?text=Gen+2'">
+                <div class="card-content">
+                    <h3>KEGIATAN 2</h3>
+                    <p>Baca selengkapnya-></p>
+                </div>
+            </div>
+
+            <div class="card-inovasi" onclick="bukaPopup('KEGIATAN 3', 'FOTO 3.jpeg', 'Kegiatan foto bersama sahabat terbaik yang pernah aku kenal selama menempuh perkulihan. so big thank for my friends, kalian orang terbaik dan terhebat yang akan terus sukses.')">
+                <img src="FOTO 3.jpeg" alt="FOTO 3" onerror="this.src='https://via.placeholder.com/400x250/1f2833/00d2ff?text=Gen+3'">
+                <div class="card-content">
+                    <h3>KEGIATAN 3</h3>
+                    <p>Baca selengkapnya-></p>
+                </div>
+            </div>
+
+            <div class="card-inovasi" onclick="bukaPopup('KEGIATAN 4', 'FOTO 4.jpeg', 'foto kedua dengan my friends,, so sweet. ini kali pertama kita full ber 9 ')">
+                <img src="FOTO 4.jpeg" alt="FOTO 4" onerror="this.src='https://via.placeholder.com/400x250/1f2833/00d2ff?text=Gen+3'">
+                <div class="card-content">
+                    <h3>KEGIATAN 4</h3>
+                    <p>Baca selengkapnya-></p>
+                </div>
+            </div>
+
+            <div class="card-inovasi" onclick="bukaPopup('KEGIATAN 5', 'FOTO 5.jpeg', 'berhasil menjadi delegasi ONMIPA bidang kimia mewakili ITPLN. sangat bangga dengan perjuangan dan kesempatan kala itu.</p>')">
+                <img src="FOTO 5.jpeg" alt="FOTO 5" onerror="this.src='https://via.placeholder.com/400x250/1f2833/00d2ff?text=Gen+3'">
+                <div class="card-content">
+                    <h3>KEGIATAN 5 5</h3>
+                    <p>Baca selengkapnya-></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="popupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="tutupPopup()">&times;</span>
+            <h2 id="popupTitle" style="color: var(--primary-blue); margin-bottom:15px;">Judul Mobil</h2>
+            <img id="popupImg" src="" alt="Foto Mobil">
+            <p id="popupDesc" style="color: var(--gray-light); line-height:1.6;"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Alamat Kami:</strong><br>Institut Teknologi PLN, Jalan Lingkar Luar Barat, Duri Kosambi, Cengkareng, Jakarta Barat, Daerah Khusus Ibukota Jakarta 11750</p>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        function bukaPopup(judul, gambar, deskripsi) {
+            document.getElementById('popupTitle').innerText = judul;
+            document.getElementById('popupImg').src = gambar;
+            document.getElementById('popupDesc').innerText = deskripsi;
+            document.getElementById('popupModal').style.display = 'flex';
+        }
+
+        function tutupPopup() {
+            document.getElementById('popupModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
